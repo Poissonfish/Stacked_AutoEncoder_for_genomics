@@ -1,0 +1,42 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jun 21 11:12:10 2018
+
+@author: samuelrevolinski
+"""
+
+#wranglin Data for AutoEncoder
+
+#importing pandas
+
+import pandas as pd
+
+A = pd.read_table('/Users/samuelrevolinski/Dropbox/James_Sam/NIR/data/fnATrain.x')
+
+
+B = pd.read_table('/Users/samuelrevolinski/Dropbox/James_Sam/NIR/data/fnBTrain.x')
+
+C = pd.read_table('/Users/samuelrevolinski/Dropbox/James_Sam/NIR/data/fnCTrain.x')
+
+#copy is so it doesnt just copy pointer
+masterFrame = A.copy()
+
+df = masterFrame.append(B)
+df = df.append(C)
+#python uses ptrs so the line below does not work because A2 points to A
+#A2 = A # makes new data frame to modify
+#adds columns of A's to data frame
+A['group'] = 'A'
+A_list = A['group']
+
+B['group'] = 'B'
+B_list = B['group']
+
+C['group'] = 'C'
+C_list = C['group']
+
+groups = A_list.copy()
+
+groups = groups.append(B_list)
+
